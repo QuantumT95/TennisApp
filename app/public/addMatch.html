@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Tennis App</title>
+    <style>
+      #unread, #read {
+        width: 40%;
+        background-color: antiquewhite;
+      }
+      #unread { float: left; }
+      #read { float: right; }
+      table, td {
+        border-width: 1px;
+        border-style: solid;
+        border-color: black;
+      }
+      #wrapper {
+        width: 960px;
+        padding-top: 10%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+      body {
+        font-family: sans-serif;
+        background-color: #C0FFEE;
+      }
+      #results { margin-top: 50px; }
+      #userinput { font-size: 24px; }
+      input {
+        width: 50%;
+        height: 36px;
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1>Tennis App</h1>
+      <h2><i>Track your scores!</i></h2>
+      <form id="userinput">
+      	<input type="tex" id="section" placeholder="Section"/>
+      	<br />
+        <input type="text" id="playerNumber" placeholder="Player Number"/>
+        <br />
+        <input type="text" id="opponentNumber" placeholder="Opponent Number"/>
+        <br />
+        <input type="text" id="score" placeholder="X-X, X-X, etc.."/>
+        <br />
+        <button type="submit" id="addMatch">Add New</button>
+      </form>
+      <div id="results">
+        <table id="matches">
+              <tr><th>Player</th><th>Opponent</th><th>Score</th></tr>
+        </table>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/js/addMatch.js"></script>
+  </body>
+</html>
