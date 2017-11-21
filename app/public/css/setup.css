@@ -1,0 +1,78 @@
+* {
+    font-family: Helvetica;
+}
+
+ul.nav {
+    background-color: #0CDB4A;
+    width: 100%;
+    padding-bottom: 15px;
+}
+a{
+    color: white;
+}
+.nav-link{
+    padding-top: 13.25px;
+}
+accent {
+    color: #0ABC3F;
+}
+
+body {
+    background-color: #F7F5F5;
+}
+
+#addTourney {
+    background-color: #44C3FB;
+    text-align: center;
+    color: white;
+}
+
+div.col{
+    text-align: center;
+}
+
+h1 {
+    color: white;
+    text-indent: 735px;
+    font-style: italic;
+}
+
+img {
+    height: 50px;
+    width: 50px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+h3 {
+    color: grey;
+}
+
+.input {
+    background-color: white;
+    border-color: grey;
+    position: relative;
+    max-width: 380px;
+	padding: 15px 35px 45px;
+	margin: 0 auto;
+	background-color: #fff;
+	border: 1px solid rgba(0,0,0,0.1);  
+}
+
+.box {
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    width: 100%;
+}
+
+
+
+
