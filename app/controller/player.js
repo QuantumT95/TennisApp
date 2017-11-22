@@ -5,52 +5,54 @@ var totalPoints;
 
 module.exports = {
 	checkPlayer: function(section, number, score, winLose) {
+		self = this;
 		var player = {
             Section: section,
 			Number: number,
 			Game: score,
-			Win: winLose
+			GamePoints: null,
+			Win: winLose,
+			WinPoints: null,
+			TotalPoints: null
 		}
-	    SQL.checkPlayer(player);
+		self.getGameWinPoints(player);
+	    // SQL.checkPlayer(player);
 	},
 	getGameWinPoints: function(player) {
-		gamePoints = this.getGamePoints(player);
-		winPoints = this.getWinPoints(player);
+		gamePoints = this.getGamePoints(player.Game);
+		winPoints = this.getWinPoints(player.Win);
 		totalPoints = parseFloat(gamePoints) + parseFloat(winPoints);
-		var playerGWP = {
-            Section: player.Section,
-			Number: player.Number,
-			GamePoints: gamePoints,
-			WinPoints: winPoints,
-			TotalPoints: totalPoints
-		}
-		// SQL.updateGameWinPoints(playerGWP);
+		player.GamePoints = gamePoints;
+		player.WinPoints = winPoints;
+		player.TotalPoints = totalPoints;
+		// console.log(player);
+		SQL.checkPlayer(player);
 	},
-	getGamePoints: function(player) {
-		if (player.Game >= 47) {
+	getGamePoints: function(game) {
+		if (game >= 47) {
 			gamePoints = 15;
 			return gamePoints;
 		}
-		else if (40 <= player.Game && player.Game <= 46) {
+		else if (40 <= game && game <= 46) {
 			gamePoints = 14;
 			return gamePoints;
 		}
-		else if (30 <= player.Game && player.Game <= 39)
+		else if (30 <= game && game <= 39)
         {
             gamePoints = 13;
             return gamePoints;
         }
-        else if (25 <= player.Game && player.Game <= 29)
+        else if (25 <= game && game <= 29)
         {
             gamePoints = 12;
             return gamePoints;
         }
-        else if (20 <= player.Game && player.Game <= 24)
+        else if (20 <= game && game <= 24)
         {
             gamePoints = 11;
             return gamePoints;
         }
-        else if (0 <= player.Game && player.Game <= 19)
+        else if (0 <= game && game <= 19)
         {
             gamePoints = 10;
             return gamePoints;
@@ -59,53 +61,53 @@ module.exports = {
         	return gamePoints;
         }
 	},
-	getWinPoints: function(player) {
-		if (player.Win >= 9)
+	getWinPoints: function(win) {
+		if (win >= 9)
         {
             winPoints = 15;
             return winPoints;
         }
-        else if (player.Win == 8)
+        else if (win == 8)
         {
             winPoints = 14.5;
             return winPoints;
         }
-        else if (player.Win == 7)
+        else if (win == 7)
         {
             winPoints = 14;
             return winPoints;
         }
-        else if (player.Win == 6)
+        else if (win == 6)
         {
             winPoints = 13.5;
             return winPoints;
         }
-        else if (player.Win == 5)
+        else if (win == 5)
         {
             winPoints = 13;
             return winPoints;
         }
-        else if (player.Win == 4)
+        else if (win == 4)
         {
             winPoints = 12.5;
             return winPoints;
         }
-        else if (player.Win == 3)
+        else if (win == 3)
         {
             winPoints = 12;
             return winPoints;
         }
-        else if (player.Win == 2)
+        else if (win == 2)
         {
             winPoints = 11.5;
             return winPoints;
         }
-        else if (player.Win == 1)
+        else if (win == 1)
         {
             winPoints = 11;
             return winPoints;
         }
-        else if (player.Win == 0)
+        else if (win == 0)
         {
             winPoints = 10.5;
             return winPoints;

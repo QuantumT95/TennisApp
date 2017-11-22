@@ -69,6 +69,8 @@ module.exports = {
 			Player.checkPlayer(match.Section, playerNumber, playerScore, winnerLoser[0]);
 			Player.checkPlayer(match.Section, opponentNumber, opponentScore, winnerLoser[1]);
 			SQL.createMatch(match);
+			playerScore = 0;
+			opponentScore = 0;
 		}
 	},
 	checkWinLose: function(playerScore, opponentScore) {

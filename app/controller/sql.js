@@ -23,6 +23,7 @@ module.exports = {
 		console.log("SQL for getting Matches goes here");
 	},
 	checkPlayer: function(player) {
+		console.log(player);
 		db.Player.findOne({
 			where: {
 				player_number: player.Number
@@ -33,25 +34,35 @@ module.exports = {
 					section: player.Section,
 					player_number: player.Number,
 					total_games: player.Game,
+					game_points: player.GamePoints,
 					total_wins: player.Win,
+					win_points: player.WinPoints,
+					total_points: player.TotalPoints,
 					createdAt: null,
 					updatedAt: null
-				}).then(function (dbPlayer2) {
-
+				}).then(function(dbPlayer2) {
+					console.log(dbPlayer2.dataValues);
 				});
 			}
 			else {
+				var p = require("./player");
 				existingPlayer = dbPlayer.dataValues;
 				var newTotalGames = existingPlayer.total_games + player.Game;
+				var newTotalGamePoints = p.getGamePoints(newTotalGames);
 				var newTotalWins = existingPlayer.total_wins + player.Win;
+				var newTotalWinPoints = p.getWinPoints(newTotalWins);
+				var newTotalPoints = parseFloat(newTotalGamePoints) + parseFloat(newTotalWinPoints);
 				db.Player.update({
 					total_games: newTotalGames,
-					total_wins: newTotalWins
+					game_points: newTotalGamePoints,
+					total_wins: newTotalWins,
+					win_points: newTotalWinPoints,
+					total_points: newTotalPoints
 				}, {
 					where: { player_number: existingPlayer.player_number }
-				}).then(function(dbPlayerUpdate) {
-					console.log(dbPlayerUpdate);
-				})
+				}).then(function(dbPlayer3) {
+					console.log(dbPlayer3);
+				});
 			}
 		});
 	},
@@ -83,40 +94,40 @@ module.exports = {
 				switch(roundCount) {
 					case 1:
 					var firstRoundMatchCount = playerCount / 2;
-					self.generateFillerData(dbTournament.dataValues, firstRoundMatchCount, roundCount);
+					self.generateTournamentFillerData(dbTournament.dataValues, firstRoundMatchCount, roundCount);
 					break;
 					case 2:
 					var secondRoundMatchCount = firstRoundMatchCount / 2;
-					self.generateFillerData(dbTournament.dataValues, secondRoundMatchCount, roundCount);
+					self.generateTournamentFillerData(dbTournament.dataValues, secondRoundMatchCount, roundCount);
 					break;
 					case 3:
 					var thirdRoundMatchCount = secondRoundMatchCount / 2;
-					self.generateFillerData(dbTournament.dataValues, thirdRoundMatchCount, roundCount);
+					self.generateTournamentFillerData(dbTournament.dataValues, thirdRoundMatchCount, roundCount);
 					break;
 					case 4:
 					var fourthRoundMatchCount = thirdRoundMatchCount / 2;
-					self.generateFillerData(dbTournament.dataValues, fourthRoundMatchCount, roundCount);
+					self.generateTournamentFillerData(dbTournament.dataValues, fourthRoundMatchCount, roundCount);
 					break;
 					case 5:
 					var fifthRoundMatchCount = fourthRoundMatchCount / 2;
-					self.generateFillerData(dbTournament.dataValues, fifthRoundMatchCount, roundCount);
+					self.generateTournamentFillerData(dbTournament.dataValues, fifthRoundMatchCount, roundCount);
 					break;
 					case 6:
 					var sixthRoundMatchCount = fifthRoundMatchCount / 2;
-					self.generateFillerData(dbTournament.dataValues, sixthRoundMatchCount, roundCount);
+					self.generateTournamentFillerData(dbTournament.dataValues, sixthRoundMatchCount, roundCount);
 					break;
 					case 7:
 					var seventhRoundMatchCount = sixthRoundMatchCount / 2;
-					self.generateFillerData(dbTournament.dataValues, seventhRoundMatchCount, roundCount);
+					self.generateTournamentFillerData(dbTournament.dataValues, seventhRoundMatchCount, roundCount);
 					break;
 				}
 				roundCount++;
 			}
-			self.pushFillerData(matches);
+			self.pushTournamentFillerData(matches);
 			matches = [];
 		});
 	},
-	generateFillerData: function(tournament, roundMatchCount, roundCount) {
+	generateTournamentFillerData: function(tournament, roundMatchCount, roundCount) {
 		var matchCount = 1;
 		var count = 0;
 		var score = "0-0";
@@ -160,7 +171,7 @@ module.exports = {
 			matches.push(match);
 		}
 	},
-	pushFillerData: function(matches) {
+	pushTournamentFillerData: function(matches) {
 		for (i = 0; i < matches.length; i++) {
 			self.createMatch(matches[i]);
 		}

@@ -12,9 +12,21 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false
     },
+    game_points: {
+      type: DataTypes.FLOAT,
+      allowNull: true
+    },
     total_wins: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+    win_points: {
+      type: DataTypes.FLOAT,
+      allowNull: true
+    },
+    total_points: {
+      type: DataTypes.FLOAT,
+      allowNull: true
     }
   });
   return Player;
