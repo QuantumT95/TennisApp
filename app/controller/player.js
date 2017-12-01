@@ -16,7 +16,6 @@ module.exports = {
 			TotalPoints: null
 		}
 		self.getGameWinPoints(player);
-	    // SQL.checkPlayer(player);
 	},
 	getGameWinPoints: function(player) {
 		gamePoints = this.getGamePoints(player.Game);
@@ -25,7 +24,6 @@ module.exports = {
 		player.GamePoints = gamePoints;
 		player.WinPoints = winPoints;
 		player.TotalPoints = totalPoints;
-		// console.log(player);
 		SQL.checkPlayer(player);
 	},
 	getGamePoints: function(game) {

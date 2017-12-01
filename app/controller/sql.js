@@ -19,11 +19,18 @@ module.exports = {
 			updatedAt: null
 		});
 	},
-	getMatches: function() {
-		console.log("SQL for getting Matches goes here");
+	getMatches: function(cb) {
+		console.log("SQL for getting matches goes here");
+		var existingMatch = {};
+		db.Match.findAll({})
+			.then(function(dbMatch) {
+			existingMatch = dbMatch[0].dataValues;
+			if (cb){
+				cb(existingMatch)
+			}
+		});
 	},
 	checkPlayer: function(player) {
-		console.log(player);
 		db.Player.findOne({
 			where: {
 				player_number: player.Number
@@ -41,7 +48,7 @@ module.exports = {
 					createdAt: null,
 					updatedAt: null
 				}).then(function(dbPlayer2) {
-					console.log(dbPlayer2.dataValues);
+
 				});
 			}
 			else {
@@ -61,7 +68,7 @@ module.exports = {
 				}, {
 					where: { player_number: existingPlayer.player_number }
 				}).then(function(dbPlayer3) {
-					console.log(dbPlayer3);
+
 				});
 			}
 		});
@@ -167,7 +174,6 @@ module.exports = {
 			}
 			playerCount++;
 			matchCount++;
-			console.log(match);
 			matches.push(match);
 		}
 	},

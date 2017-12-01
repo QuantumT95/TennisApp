@@ -36,18 +36,30 @@ $(document).ready(function() {
 	  getMatches();
 	});
 
+	$(document).on("click", ".edit", function() {
+	  var thisId = $(this).attr("data-id");
+	  $.ajax({
+	    type: "GET",
+	    url: "/matches/edit/" + thisId
+	  });
+	  $(this).parents("tr").remove();
+	  getMatches();
+	});
+
 	function getMatches() {
 	  $("#matches").empty();
 	  $.getJSON("/matches", function(data) {
+	  	console.log(data);
 	    for (var i = 0; i < data.length; i++) {
 	      $("#match").prepend("<tr><td>" + data[i].matchType + "</td><td>" +
 	      	data[i].numberOfSets + "</td><td>" + 
 	      	data[i].playerNumber + "</td><td>" + 
 	      	data[i].opponentNumber + "</td><td>" + 
 	      	data[i].score + 
-	        "</td><td><button class='delete' data-id='" + data[i].id + "'>Delete</button></td></tr>");
+	      	"</td><td><button class='edit' data-id='" + data[i].id + "'>Edit</button></td></tr>"
+	        + "</td><td><button class='delete' data-id='" + data[i].id + "'>Delete</button></td></tr>");
 	    }
-	    $("#match").prepend("<tr><th>Number of Sets -------- </th><th>Player --------</th><th>Opponent --------</th><th>Score</th></tr>");
+	    $("#match").prepend("<tr><th>Match Type-------- </th><th>Number of Sets -------- </th><th>Player --------</th><th>Opponent --------</th><th>Score</th></tr>");
 	  });
 	}
 	getMatches();

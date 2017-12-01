@@ -25,21 +25,17 @@ module.exports = function(App) {
 	});
 
 	App.get("/matches", function(req, res) {
-		SQL.getMatches();
+		var existingMatches = SQL.getMatches((existingMatches)=>{	
+			console.log(existingMatches);
+			res.JSON(existingMatches);
+		});
 	});
 
 	App.get("/matches/delete/:id", function(req, res) {
-		var matchId = req.params.id;
-		m.deleteMatch(matchId);
+
 	});
 
 	App.get("/gamewinpoints/:playerNumber?", function(req, res) {
-		var playerNumber = req.params.playerNumber;
-		if (playerNumber) {
 
-		}
-		else {
-
-		}
 	});
 }

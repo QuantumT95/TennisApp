@@ -21,7 +21,6 @@ var scores = [];
 
 module.exports = {
 	createMatch: function(match) {
-		console.log(match);
 		score = match.Score;
 		if (match.IsTournamentMatch === "false") {
 			isTournamentMatch = false;
