@@ -12,4 +12,8 @@ module.exports = function(App) {
 		console.log("Made it to add Tournament");
 		res.sendFile(Path.join(__dirname, "../public/addTournament.html"));
 	});
+	App.get("/setup", function (req, res) {
+ 		console.log("Made it to setup");
+ 		res.sendFile(Path.join(__dirname, "../public/setup.html"));
+ 	});
 }
