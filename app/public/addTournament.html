@@ -1,60 +1,63 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>Tennis App</title>
-    <style>
-      #unread, #read {
-        width: 40%;
-        background-color: antiquewhite;
-      }
-      #unread { float: left; }
-      #read { float: right; }
-      table, td {
-        border-width: 1px;
-        border-style: solid;
-        border-color: black;
-      }
-      #wrapper {
-        width: 960px;
-        padding-top: 10%;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-      }
-      body {
-        font-family: sans-serif;
-        background-color: #C0FFEE;
-      }
-      #results { margin-top: 50px; }
-      #userinput { font-size: 24px; }
-      input {
-        width: 50%;
-        height: 36px;
-        font-size: 24px;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="wrapper">
-      <h1>Tennis App</h1>
-      <h2><i>Create your Tournament!</i></h2>
-      <form id="userinput">
-        <input type="text" id="tournamentType" placeholder="Type"/>
-        <br />
-        <input type="text" id="numberOfPlayers" placeholder="Number Of Players"/>
-        <br />
-        <input type="text" id="numberOfSets" placeholder="Number Of Sets"/>
-        <br />
-        <button type="submit" id="addTournament">Add New</button>
-      </form>
-      <div id="results">
-        <table id="tournaments">
-              <tr><th>Type</th><th>Players</th><th>Created At</th></tr>
-        </table>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Tennis App</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+    crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="./css/setup.css">
+</head>
+
+<body>
+  <div class="nav-wrap">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/index">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/addMatch">Add Match</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/addTournament">Add Tournament</a>
+      </li>
+    </ul>
+    <div>
+      <div class="logo-wrap">
+        <h1>TopSpin</h1>
+        <img class="img-responsive" src="./images/tennisBall.png" alt="Tennis Ball">
       </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="/js/addTournament.js"></script>
-  </body>
+  </div>
+  <br/>
+  <br/>
+  <br/>
+  <div class="container">
+    <div id="wrapper">
+      <h2>Tournament Setup</h2>
+      <div class="container input">
+        <form id="userinput">
+          <input placeholder="Type" id="touneyType" class="box" />
+          <br />
+          <input placeholder="Number of Players" id="numberPlayers" class="box" />
+          <br />
+          <input placeholder="Number of Seats" id="seats" class="box" />
+          <br />
+        </form>
+      </div>
+      <br/>
+      <div class="row">
+        <div class="col">
+        </div>
+        <div class="col mid">
+          <button type="submit" id="addTourney">Add New</button>
+        </div>
+        <div class="col">
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+
 </html>
