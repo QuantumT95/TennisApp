@@ -24,7 +24,7 @@ $(document).ready(function() {
 	  }
 		);
 		window.location.reload(true);
-	  return false;
+	  	return false;
 	});
 
 	$(document).on("click", ".delete", function() {

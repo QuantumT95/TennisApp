@@ -25,10 +25,10 @@ module.exports = {
 		db.Match.findAll({})
 			.then(function(dbMatch) {
 			for (i = 0; i < dbMatch.length; i++) {
-				existingMatch.push(dbMatch[i].dataValues);
+				existingMatches.push(dbMatch[i].dataValues);
 			}
 			if (cb){
-				cb(existingMatch)
+				cb(existingMatches)
 			}
 		});
 	},

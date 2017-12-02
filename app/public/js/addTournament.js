@@ -15,9 +15,9 @@ $(document).ready(function() {
 	    $("#numberPlayers").val("");
 	    $("#numberPlayers").val("");
 	  }
-	  );
-	  window.location.reload(true);
-	  return false;
+	  	);
+		window.location.reload(true);
+		return false;
 	});
 
 	$(document).on("click", ".delete", function() {
