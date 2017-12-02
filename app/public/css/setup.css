@@ -23,7 +23,7 @@ body {
     background-color: #F7F5F5;
 }
 
-#addTourney {
+#addTourney, #addMatch {
     background-color: #44C3FB;
     text-align: center;
     color: white;
@@ -38,7 +38,7 @@ body {
     z-index: -9;
 }
 
-#addTourney:focus{
+#addTourney:focus, #addMatch:focus{
     outline: none;
     -webkit-box-shadow: 10px 10px 35px -13px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 35px -13px rgba(0,0,0,0.75);
@@ -46,7 +46,7 @@ body {
     z-index: -9;
 }
 
-#addTourney:active{
+#addTourney:active, #addMatch:active{
     height: 37px;
     width: 152px;
     margin-top: 3.5%;
@@ -55,7 +55,7 @@ body {
     box-shadow: 10px 10px 35px -13px rgba(0,0,0,0.75);
 }
 
-#addTourney:visited{
+#addTourney:visited, #addMatch:visited{
     -webkit-box-shadow: 10px 10px 35px -13px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 35px -13px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 35px -13px rgba(0,0,0,0.75);
