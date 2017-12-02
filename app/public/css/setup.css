@@ -132,6 +132,12 @@ input:focus{
     width: 100%;
 }
 
+#results{
+    display: flex;
+    justify-content: center;
+    padding-top: 4%;
+}
+
 
 
 

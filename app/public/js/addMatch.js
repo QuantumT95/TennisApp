@@ -22,7 +22,8 @@ $(document).ready(function() {
 	    $("#opponentParterNumber").val("");
 	    $("#score").val("");
 	  }
-	  );
+		);
+		window.location.reload(true);
 	  return false;
 	});
 
