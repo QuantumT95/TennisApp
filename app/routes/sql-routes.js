@@ -36,6 +36,13 @@ module.exports = function(App) {
 		});
 	});
 
+	App.get("/tournaments/select/:id", function(req, res) {
+		var id = req.params.id;
+		var existingtourneyMatches = SQL.getTourneyMatches((existingtourneyMatches)=>{	
+			res.send(existingtourneyMatches);
+		}, id);
+	});
+
 	App.get("/matches/delete/:id", function(req, res) {
 
 	});

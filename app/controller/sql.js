@@ -45,6 +45,23 @@ module.exports = {
 			}
 		});
 	},
+	getTourneyMatches: function(cb, id) {
+		console.log("SQL for getting tourney matches goes here");
+		var existingTourneyMatches = [];
+		db.Match.findAll({
+			where : { 
+				tournament_section: { like: id + '%'}
+			}
+		})
+			.then(function(dbTourneyMatch) {
+			for (i = 0; i < dbTourneyMatch.length; i++) {
+				existingTourneyMatches.push(dbTourneyMatch[i].dataValues);
+			}
+			if (cb){
+				cb(existingTourneyMatches)
+			}
+		});
+	},
 	checkPlayer: function(player) {
 		db.Player.findOne({
 			where: {

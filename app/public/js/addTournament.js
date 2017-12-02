@@ -33,11 +33,11 @@ $(document).ready(function() {
 	$(document).on("click", ".select", function() {
 	  var thisId = $(this).attr("data-id");
 	  $.ajax({
-	    type: "GET",
-	    url: "/matches/select/" + thisId
+	    url: "/tournaments/select/" + thisId
+	  }).done(function(data) {
+	  	console.log(data);
 	  });
-	  $(this).parents("tr").remove();
-	  getMatches();
+	  getTournaments();
 	});
 
 	function getTournaments() {
