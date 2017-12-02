@@ -1,0 +1,132 @@
+body {
+    margin: 0 auto;
+    font-family: 'Helvetica Neue';
+    background: #0CDB4A;
+}
+
+#wrapper {
+    width: 100%;
+}
+
+.navbar {
+    width: 500px;
+    height: 25px; 
+    padding: 15px;
+    font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+    position: relative;
+    background-color: #0CDB4A;
+} 
+
+a {
+    color: #F7F5F5;
+    text-decoration: none;
+}
+
+#logo-box { 
+    font-family: 'Helvetica Neue';
+    justify-content: center;  
+    position: relative;
+    margin: 200px;
+}
+
+#logo-text {
+    color: #F7F5F5;
+    font-style: italic;
+    font-size: 125px;
+    position: absolute;
+    margin-top: 190px;
+    
+}
+
+/*image w/ z-index of -1, will be placed behind the text */
+#logo-img {
+    position: absolute;
+    margin-left: 377px;
+    margin-top: 165px;
+    z-index: -1;
+}
+
+
+a:hover {
+    background-color: #0ABC3F;
+}
+
+.footer {
+   position: fixed;
+   bottom: 50px;
+   width: 100%;
+   font-size: 12px;
+   background-color: #0CDB4A;
+   color: #F7F5F5;
+   text-align: center;
+}
+
+/*added code for Responsive Portfolio*/
+/* @media only screen and (min-width: 1200px){
+    .navbar {
+        font-size: 18px;
+        color: red;
+    }
+    
+    #logo-text {
+        font-size: 100px;
+        text-align: center;
+    }
+    
+    #logo-img {
+        margin-top: 140px;
+        margin-left: 277px;
+    }
+
+} */
+
+@media only screen and (max-width: 979px){
+    .navbar {
+        font-size: 18px;
+    }
+    #logo-box { 
+        justify-content: center;  
+        position: fixed;
+        margin: 200px;
+    }
+
+    #logo-text {
+        font-size: 100px;
+        margin-top: 180px;   
+    }
+    
+    #logo-img {
+        margin-top: 140px;
+        margin-left: 277px;
+    }
+
+}
+
+@media only screen and (max-width: 767px){
+    .navbar {
+        font-size: 25px;
+        width: 640;
+        padding: 10;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .navbar {
+        font-size: 25px;
+        width: 480px;
+        padding: 10;
+    }
+    #logo-text {
+        font-size: 100px;
+        justify-content: center;
+        width: 580px;
+    }
+    
+    #logo-img {
+        margin-top: 140px;
+        margin-left: 97px;
+       
+        z-index: -1;
+    }
+
+}
