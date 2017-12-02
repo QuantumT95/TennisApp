@@ -1,20 +1,35 @@
+html {
+    height: 100%;
+    width:100%;
+}
+
 body {
     margin: 0 auto;
     font-family: 'Helvetica Neue';
     background: #0CDB4A;
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
 #wrapper {
     width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar {
     width: 500px;
-    height: 25px; 
+    height: 10%; 
     padding: 15px;
     font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
-    position: relative;
+    position: absolute;
     background-color: #0CDB4A;
+    box-sizing: border-box;
+    z-index: 10;
 } 
 
 a {
@@ -26,7 +41,8 @@ a {
     font-family: 'Helvetica Neue';
     justify-content: center;  
     position: relative;
-    margin: 200px;
+    height: 150px;
+    width: 600px;
 }
 
 #logo-text {
@@ -34,15 +50,14 @@ a {
     font-style: italic;
     font-size: 125px;
     position: absolute;
-    margin-top: 190px;
     
 }
 
 /*image w/ z-index of -1, will be placed behind the text */
 #logo-img {
     position: absolute;
-    margin-left: 377px;
-    margin-top: 165px;
+    margin-left: 375px;
+    margin-top: -30px;
     z-index: -1;
 }
 
@@ -77,10 +92,9 @@ a:hover {
         margin-top: 140px;
         margin-left: 277px;
     }
-
 } */
 
-@media only screen and (max-width: 979px){
+/* @media only screen and (max-width: 979px){
     .navbar {
         font-size: 18px;
     }
@@ -99,18 +113,17 @@ a:hover {
         margin-top: 140px;
         margin-left: 277px;
     }
+} */
 
-}
-
-@media only screen and (max-width: 767px){
+/* @media only screen and (max-width: 767px){
     .navbar {
         font-size: 25px;
         width: 640;
         padding: 10;
     }
-}
+} */
 
-@media only screen and (max-width: 480px){
+/* @media only screen and (max-width: 480px){
     .navbar {
         font-size: 25px;
         width: 480px;
@@ -129,4 +142,4 @@ a:hover {
         z-index: -1;
     }
 
-}
+} */
