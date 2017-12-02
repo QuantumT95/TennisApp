@@ -1,19 +1,19 @@
 var Path = require("path");
 
-module.exports = function(App) {
-	App.get("/", function(req, res) {
-		res.sendFile(Path.join(__dirname, "../public/index.html"));
+module.exports = function (App) {
+	App.get("/", function (req, res) {
+		res.sendFile(Path.join(__dirname, "../public/index copy.html"));
 	});
-	App.get("/addMatch", function(req, res) {
+	App.get("/addMatch", function (req, res) {
 		console.log("Made it to add Match");
 		res.sendFile(Path.join(__dirname, "../public/addMatch.html"));
 	});
-	App.get("/addTournament", function(req, res) {
+	App.get("/addTournament", function (req, res) {
 		console.log("Made it to add Tournament");
 		res.sendFile(Path.join(__dirname, "../public/addTournament.html"));
 	});
 	App.get("/setup", function (req, res) {
- 		console.log("Made it to setup");
- 		res.sendFile(Path.join(__dirname, "../public/setup.html"));
- 	});
+		console.log("Made it to setup");
+		res.sendFile(Path.join(__dirname, "../public/setup.html"));
+	});
 }
