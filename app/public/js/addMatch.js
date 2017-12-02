@@ -51,15 +51,15 @@ $(document).ready(function() {
 	  $.getJSON("/matches", function(data) {
 	  	console.log(data);
 	    for (var i = 0; i < data.length; i++) {
-	      $("#match").prepend("<tr><td>" + data[i].matchType + "</td><td>" +
-	      	data[i].numberOfSets + "</td><td>" + 
-	      	data[i].playerNumber + "</td><td>" + 
-	      	data[i].opponentNumber + "</td><td>" + 
+	      $("#matches").prepend("<tr><td>" + data[i].match_type + "</td><td>" +
+	      	data[i].number_of_sets + "</td><td>" + 
+	      	data[i].player_number + "</td><td>" + 
+	      	data[i].opponent_number + "</td><td>" + 
 	      	data[i].score + 
 	      	"</td><td><button class='edit' data-id='" + data[i].id + "'>Edit</button></td></tr>"
 	        + "</td><td><button class='delete' data-id='" + data[i].id + "'>Delete</button></td></tr>");
 	    }
-	    $("#match").prepend("<tr><th>Match Type-------- </th><th>Number of Sets -------- </th><th>Player --------</th><th>Opponent --------</th><th>Score</th></tr>");
+	    $("#matches").prepend("<tr><th>Match Type-------- </th><th>Number of Sets -------- </th><th>Player --------</th><th>Opponent --------</th><th>Score</th></tr>");
 	  });
 	}
 	getMatches();

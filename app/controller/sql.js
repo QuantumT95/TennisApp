@@ -21,10 +21,12 @@ module.exports = {
 	},
 	getMatches: function(cb) {
 		console.log("SQL for getting matches goes here");
-		var existingMatch = {};
+		var existingMatch = [];
 		db.Match.findAll({})
 			.then(function(dbMatch) {
-			existingMatch = dbMatch[0].dataValues;
+			for (i = 0; i < dbMatch.length; i++) {
+				existingMatch.push(dbMatch[i].dataValues);
+			}
 			if (cb){
 				cb(existingMatch)
 			}

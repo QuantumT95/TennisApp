@@ -26,7 +26,6 @@ module.exports = function(App) {
 
 	App.get("/matches", function(req, res) {
 		var existingMatches = SQL.getMatches((existingMatches)=>{	
-			console.log(existingMatches);
 			res.send(existingMatches);
 		});
 	});
