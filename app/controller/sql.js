@@ -21,7 +21,7 @@ module.exports = {
 	},
 	getMatches: function(cb) {
 		console.log("SQL for getting matches goes here");
-		var existingMatch = [];
+		var existingMatches = [];
 		db.Match.findAll({})
 			.then(function(dbMatch) {
 			for (i = 0; i < dbMatch.length; i++) {
@@ -29,6 +29,19 @@ module.exports = {
 			}
 			if (cb){
 				cb(existingMatch)
+			}
+		});
+	},
+	getTournies: function(cb) {
+		console.log("SQL for getting tournies goes here");
+		var existingTournies = [];
+		db.Tournament.findAll({})
+			.then(function(dbTourney) {
+			for (i = 0; i < dbTourney.length; i++) {
+				existingTournies.push(dbTourney[i].dataValues);
+			}
+			if (cb){
+				cb(existingTournies)
 			}
 		});
 	},

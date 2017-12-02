@@ -1,22 +1,22 @@
 $(document).ready(function() {
-	$("#addTournament").on("click", function() {
+	$("#addTourney").on("click", function() {
 	  $.ajax({
 	    type: "POST",
 	    url: "/submit/tournament",
 	    dataType: "json",
 	    data: {
-	    	TournamentType: $("#tournamentType").val(),
-	    	NumberOfPlayers: $("#numberOfPlayers").val(),
-	    	NumberOfSets: $("#numberOfSets").val(),
+	    	TournamentType: $("#touneyType").val(),
+	    	NumberOfPlayers: $("#numberPlayers").val(),
+	    	NumberOfSets: $("#numberSets").val(),
 	    }
 	  }).done(function(data) {
 	    getTournaments();
-	    console.log("Inside done func");
-	    $("#tournamentType").val("");
-	    $("#numberOfPlayers").val("");
-	    $("#numberOfSets").val("");
+	    $("#touneyType").val("");
+	    $("#numberPlayers").val("");
+	    $("#numberPlayers").val("");
 	  }
 	  );
+	  window.location.reload(true);
 	  return false;
 	});
 
@@ -30,19 +30,28 @@ $(document).ready(function() {
 	  getTournaments();
 	});
 
+	$(document).on("click", ".select", function() {
+	  var thisId = $(this).attr("data-id");
+	  $.ajax({
+	    type: "GET",
+	    url: "/matches/select/" + thisId
+	  });
+	  $(this).parents("tr").remove();
+	  getMatches();
+	});
+
 	function getTournaments() {
-	  $("#tournaments").empty();
+	  $("#tournies").empty();
 	  $.getJSON("/tournaments", function(data) {
 	    for (var i = 0; i < data.length; i++) {
-	      $("#tournament").prepend("<tr><td>" + data[i].tournament_type + "</td><td>" +
+	      $("#tournies").prepend("<tr><td>" + data[i].tournament_type + "</td><td>" +
 	      	data[i].number_of_players + "</td><td>" + 
 	      	data[i].number_of_rounds + "</td><td>" + 
 	      	data[i].number_of_sets + "</td><td>" + 
-	        "</td><td><button class='delete' data-id='" + data[i].id + "'>Delete</button></td></tr>");
+	        "</td><td><button class='select' data-id='" + data[i].id + "'>Select</button></td><td><button class='delete' data-id='" + data[i].id + "'>Delete</button></td></tr>");
 	    }
-	    $("#tournament").prepend("<tr><th>Type -------- </th><th>Number Of Players --------</th><th>Number of Sets --------</th></tr>");
+	    $("#tournies").prepend("<tr><th>Type -------- </th><th>Number Of Players --------</th><th>Number of Rounds --------</th><th>Number of Sets --------</th></tr>");
 	  });
 	}
-
 	getTournaments();
 });

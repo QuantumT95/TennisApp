@@ -37,11 +37,11 @@
       <h2>Tournament Setup</h2>
       <div class="container input">
         <form id="userinput">
-          <input placeholder="Type" id="touneyType" class="box" />
+          <input placeholder="Tournament Type" id="touneyType" class="box" />
           <br />
           <input placeholder="Number of Players" id="numberPlayers" class="box" />
           <br />
-          <input placeholder="Number of Seats" id="seats" class="box" />
+          <input placeholder="Number of Sets" id="numberSets" class="box" />
           <br />
         </form>
       </div>
@@ -57,7 +57,13 @@
       </div>
     </div>
   </div>
+  <div id="results"> 
+    <table id="tournies">
+      <tr><th>Tournament Type</th><th>Number of Players</th><th>Number of Sets</th></tr>
+    </table>
+  </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="./js/addTournament.js"></script>
 </body>
 
 </html>
