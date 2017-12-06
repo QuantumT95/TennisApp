@@ -111,11 +111,20 @@ module.exports = {
 		db.Player.findAll({})
 			.then(function(dbPlayer) {
 			for (i = 0; i < dbPlayer.length; i++) {
-				existingPlayers.push(dbPlayer[i].dataValues);
+				existingPlayers.unshift(dbPlayer[i].dataValues);
 			}
 			if (cb){
 				cb(existingPlayers);
 			}
+		});
+	},
+	deletePlayer: function(id) {
+		db.Player.destroy({
+			where: {
+				id: id
+			}
+		}).then(function(dbPlayer) {
+
 		});
 	},
 	createTournament: function(tournament) {

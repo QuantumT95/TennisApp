@@ -5,6 +5,7 @@ $(document).ready(function () {
 			type: "GET",
 			url: "/players/delete/" + thisId
 		});
+		console.log("hi");
 		$(this).parents("tr").remove();
 		getPlayers();
 	});

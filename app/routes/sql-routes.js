@@ -20,6 +20,11 @@ module.exports = function(App) {
 		});
 	});
 
+	App.get("/players/delete/:id", function(req, res) {
+		var id = req.params.id;
+		SQL.deletePlayer(id);
+	});
+
 	App.get("/matches", function(req, res) {
 		var existingMatches = SQL.getMatches((existingMatches)=>{	
 			res.send(existingMatches);
