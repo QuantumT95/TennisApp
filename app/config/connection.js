@@ -12,7 +12,7 @@ if (process.env.JAWSDB_URL) {
   connection =mysql.createConnection(process.env.JAWSDB_URL);
   } else {
     connection = mysql.createConnection({
-      host: '',
+      host: 'localhost',
       username: 'root',
       password: 'MyNewPass',
       database: 'tennis_db'
