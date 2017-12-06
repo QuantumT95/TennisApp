@@ -27,6 +27,7 @@ $(document).ready(function () {
 			url: "/tournaments/delete/" + thisId
 		});
 		$(this).parents("tr").remove();
+		window.location.reload(true);
 		getTournaments();
 	});
 
