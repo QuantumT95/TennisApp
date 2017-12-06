@@ -166,6 +166,15 @@ tr td {
     border-radius: 5.5px;
 }
 
+.select{
+    background-color: orange;
+    text-align: center;
+    color: white;
+    border-style: none;
+    margin-top: 4%;
+    border-radius: 5.5px;
+}
+
 .edit td{
     border-style: none;
     background-color: transparent !important;
