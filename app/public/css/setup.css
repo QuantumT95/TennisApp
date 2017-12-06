@@ -158,7 +158,7 @@ tr td {
 }
 
 .edit{
-    background-color: red;
+    background-color: orange;
     text-align: center;
     color: white;
     border-style: none;
@@ -178,7 +178,7 @@ tr td {
 }
 
 .delete{
-    background-color: orange;
+    background-color: red;
     text-align: center;
     color: white;
     border-style: none;
