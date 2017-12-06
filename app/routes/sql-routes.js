@@ -31,6 +31,16 @@ module.exports = function(App) {
 		});
 	});
 
+	App.get("/matches/edit/:id", function(req, res) {
+		var id = req.params.id;
+		SQL.editMatch(id);
+	});
+
+	App.get("/matches/delete/:id", function(req, res) {
+		var id = req.params.id;
+		SQL.deleteMatch(id);
+	});
+
 	App.get("/tournaments", function(req, res) {
 		var existingTournies = SQL.getTournies((existingTournies)=>{	
 			res.send(existingTournies);

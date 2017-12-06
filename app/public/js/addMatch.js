@@ -13,7 +13,7 @@ $(document).ready(function () {
 				Score: $("#score").val(),
 				IsTournamentMatch: false
 			}
-		}).done(function (data) {
+		}).done(function(data) {
 			getMatches();
 			$("#section").val("");
 			$("#playerNumber").val("");
@@ -22,7 +22,7 @@ $(document).ready(function () {
 			$("#opponentParterNumber").val("");
 			$("#score").val("");
 		}
-			);
+		);
 		window.location.reload(true);
 		return false;
 	});
@@ -34,6 +34,7 @@ $(document).ready(function () {
 			url: "/matches/delete/" + thisId
 		});
 		$(this).parents("tr").remove();
+		window.location.reload(true);
 		getMatches();
 	});
 
@@ -44,6 +45,7 @@ $(document).ready(function () {
 			url: "/matches/edit/" + thisId
 		});
 		$(this).parents("tr").remove();
+		window.location.reload(true);
 		getMatches();
 	});
 

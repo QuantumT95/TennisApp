@@ -32,6 +32,19 @@ module.exports = {
 			}
 		});
 	},
+	editMatch: function(id) {
+		console.log("SQL for editing a match goes here");
+	},
+	deleteMatch: function(id) {
+		console.log("SQL for deleting a match goes here");
+		db.Match.destroy({
+			where: {
+				id: id
+			}
+		}).then(function(dbPlayer) {
+
+		});
+	},
 	getTournies: function(cb) {
 		console.log("SQL for getting tournies goes here");
 		var existingTournies = [];
@@ -119,6 +132,7 @@ module.exports = {
 		});
 	},
 	deletePlayer: function(id) {
+		console.log("SQL for deleting a player goes here");
 		db.Player.destroy({
 			where: {
 				id: id
