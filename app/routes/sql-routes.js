@@ -54,6 +54,12 @@ module.exports = function(App) {
 		}, id);
 	});
 
+	App.get("/tournaments/delete/:id", function(req, res) {
+		var id = req.params.id;
+		SQL.deleteTourneys(id);
+	});
+
+
 	App.get("/matches/delete/:id", function(req, res) {
 
 	});

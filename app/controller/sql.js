@@ -58,6 +58,18 @@ module.exports = {
 			}
 		});
 	},
+
+	deleteTourneys: function(id) {
+		console.log("SQL for deleting a match goes here");
+		db.Match.destroy({
+			where: {
+				id: id
+			}
+		}).then(function(dbTourney) {
+
+		});
+	},
+
 	getTourneyMatches: function(cb, id) {
 		console.log("SQL for getting tourney matches goes here");
 		var existingTourneyMatches = [];
