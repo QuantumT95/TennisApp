@@ -14,14 +14,10 @@ module.exports = function(App) {
 		t.createTournament(tournament);
 	});
 
-	App.get("/players/:playerNumber?", function(req, res) {
-		var playerNumber = req.params.playerNumber;
-		if (playerNumber) {
-
-		}
-		else {
-
-		}
+	App.get("/players", function(req, res) {
+		var existingPlayers = SQL.getPlayers((existingPlayers)=>{
+			res.send(existingPlayers);
+		});
 	});
 
 	App.get("/matches", function(req, res) {

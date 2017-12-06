@@ -28,7 +28,7 @@ module.exports = {
 				existingMatches.push(dbMatch[i].dataValues);
 			}
 			if (cb){
-				cb(existingMatches)
+				cb(existingMatches);
 			}
 		});
 	},
@@ -41,7 +41,7 @@ module.exports = {
 				existingTournies.push(dbTourney[i].dataValues);
 			}
 			if (cb){
-				cb(existingTournies)
+				cb(existingTournies);
 			}
 		});
 	},
@@ -58,7 +58,7 @@ module.exports = {
 				existingTourneyMatches.push(dbTourneyMatch[i].dataValues);
 			}
 			if (cb){
-				cb(existingTourneyMatches)
+				cb(existingTourneyMatches);
 			}
 		});
 	},
@@ -102,6 +102,19 @@ module.exports = {
 				}).then(function(dbPlayer3) {
 
 				});
+			}
+		});
+	},
+	getPlayers: function(cb) {
+		console.log("SQL for getting players goes here");
+		var existingPlayers = [];
+		db.Player.findAll({})
+			.then(function(dbPlayer) {
+			for (i = 0; i < dbPlayer.length; i++) {
+				existingPlayers.push(dbPlayer[i].dataValues);
+			}
+			if (cb){
+				cb(existingPlayers);
 			}
 		});
 	},
