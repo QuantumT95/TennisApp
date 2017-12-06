@@ -25,6 +25,7 @@ body {
     width: 500px;
     height: 10%; 
     padding: 15px;
+    font-size: 18px;
     font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
     position: absolute;
     background-color: #0CDB4A;
@@ -43,6 +44,7 @@ a {
     position: relative;
     height: 150px;
     width: 600px;
+    padding-bottom: 15px;
 }
 
 #logo-text {
@@ -61,14 +63,13 @@ a {
     z-index: -1;
 }
 
-
 a:hover {
     background-color: #0ABC3F;
 }
 
 .footer {
    position: fixed;
-   bottom: 50px;
+   bottom: 40px;
    width: 100%;
    font-size: 12px;
    background-color: #0CDB4A;
@@ -77,69 +78,24 @@ a:hover {
 }
 
 /*added code for Responsive Portfolio*/
-/* @media only screen and (min-width: 1200px){
-    .navbar {
-        font-size: 18px;
-        color: red;
-    }
-    
-    #logo-text {
-        font-size: 100px;
-        text-align: center;
-    }
-    
-    #logo-img {
-        margin-top: 140px;
-        margin-left: 277px;
-    }
-} */
 
-/* @media only screen and (max-width: 979px){
+@media only screen and (max-width: 480px){
     .navbar {
-        font-size: 18px;
+        font-size: 25px;
+        width: 580px;
+        padding: 10;
     }
     #logo-box { 
-        justify-content: center;  
-        position: fixed;
-        margin: 200px;
-    }
-
-    #logo-text {
-        font-size: 100px;
-        margin-top: 180px;   
-    }
-    
-    #logo-img {
-        margin-top: 140px;
-        margin-left: 277px;
-    }
-} */
-
-/* @media only screen and (max-width: 767px){
-    .navbar {
-        font-size: 25px;
-        width: 640;
-        padding: 10;
-    }
-} */
-
-/* @media only screen and (max-width: 480px){
-    .navbar {
-        font-size: 25px;
-        width: 480px;
-        padding: 10;
+        padding-left: 50px;
     }
     #logo-text {
-        font-size: 100px;
-        justify-content: center;
-        width: 580px;
-    }
-    
+        font-size: 90px;
+        margin-top: 80px;         
+    }  
     #logo-img {
-        margin-top: 140px;
-        margin-left: 97px;
-       
-        z-index: -1;
+        margin-left: 260px;
+        margin-top: 30px;    
+    }  
+    .footer {
+        font-size: 18px;
     }
-
-} */

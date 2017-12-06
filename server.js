@@ -3,7 +3,7 @@ var bodyParser = require("body-parser");
 var App = Express();
 App.use(bodyParser.urlencoded({ extended: false }));
 App.use(Express.static(__dirname + '/app/public'));
-var PORT = process.env.PORT || 8082;
+var PORT = process.env.PORT || 3306;
 var DB = require("./app/models");
 
 require("./app/routes/sql-routes.js")(App);

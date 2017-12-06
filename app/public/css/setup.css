@@ -5,7 +5,7 @@
 a:hover{
     text-decoration: none;
     color: white;
-    font-size: 19.5px;
+    background-color: #0ABC3F;
 }
 
 a{
@@ -21,6 +21,16 @@ accent {
 
 body {
     background-color: #F7F5F5;
+    /* added positions */
+    position: relative;
+}
+#logo-text {
+    position: absolute;
+}
+#logo-img {
+    position: absolute;
+    padding: 0 90px;
+    z-index: -1;
 }
 
 #addTourney, #addMatch {
@@ -68,6 +78,8 @@ div.col{
 h1 {
     color: white;
     font-style: italic;
+    font-size: 30px;
+    margin-top: 9px;
 }
 
 img {
@@ -122,14 +134,19 @@ input:focus{
 
 .nav-wrap{
     display: flex;
-    justify-content: space-between;
+    /* changed from space inbetween */
+    justify-content: left;
     background-color: #0CDB4A;
     width: 100%;
+    position: absolute;
+    z-index:10;
 }
 
 .logo-wrap {
     display: flex;
     width: 100%;
+    position: absolute;
+    left: 0;
 }
 
 #results{
