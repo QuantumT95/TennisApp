@@ -19,7 +19,7 @@ $(document).ready(function() {
 	      			data[i].total_games + "</td><td>" + 
 	      			data[i].game_points + "</td><td>" + 
 	      			data[i].total_wins + "</td><td>" + 
-	      			data[i].win_points + <"</td><td>" +
+	      			data[i].win_points + "</td><td>" +
 	      			data[i].total_points + 
 	        		"</td><td><button class='delete' data-id='" + data[i].id + "'>Delete</button></td></tr>");
 	    }
