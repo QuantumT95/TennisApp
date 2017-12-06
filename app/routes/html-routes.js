@@ -2,7 +2,7 @@ var Path = require("path");
 
 module.exports = function (App) {
 	App.get("/", function (req, res) {
-		res.sendFile(Path.join(__dirname, "../public/index copy.html"));
+		res.sendFile(Path.join(__dirname, "../public/index.html"));
 	});
 	App.get("/viewPlayers", function (req, res) {
 		console.log("Made it to viewPlayers");

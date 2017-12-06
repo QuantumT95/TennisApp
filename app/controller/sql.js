@@ -3,7 +3,7 @@ var matches = [];
 var playerCount = 1;
 
 module.exports = {
-	createMatch: function(match) {
+	createMatch: function (match) {
 		db.Match.create({
 			section: match.Section,
 			match_type: match.MatchType,
@@ -19,80 +19,80 @@ module.exports = {
 			updatedAt: null
 		});
 	},
-	getMatches: function(cb) {
+	getMatches: function (cb) {
 		console.log("SQL for getting matches goes here");
 		var existingMatches = [];
 		db.Match.findAll({})
-			.then(function(dbMatch) {
-			for (i = 0; i < dbMatch.length; i++) {
-				existingMatches.push(dbMatch[i].dataValues);
-			}
-			if (cb){
-				cb(existingMatches);
-			}
-		});
+			.then(function (dbMatch) {
+				for (i = 0; i < dbMatch.length; i++) {
+					existingMatches.push(dbMatch[i].dataValues);
+				}
+				if (cb) {
+					cb(existingMatches);
+				}
+			});
 	},
-	editMatch: function(id) {
+	editMatch: function (id) {
 		console.log("SQL for editing a match goes here");
 	},
-	deleteMatch: function(id) {
+	deleteMatch: function (id) {
 		console.log("SQL for deleting a match goes here");
 		db.Match.destroy({
 			where: {
 				id: id
 			}
-		}).then(function(dbPlayer) {
+		}).then(function (dbPlayer) {
 
 		});
 	},
-	getTournies: function(cb) {
+	getTournies: function (cb) {
 		console.log("SQL for getting tournies goes here");
 		var existingTournies = [];
 		db.Tournament.findAll({})
-			.then(function(dbTourney) {
-			for (i = 0; i < dbTourney.length; i++) {
-				existingTournies.push(dbTourney[i].dataValues);
-			}
-			if (cb){
-				cb(existingTournies);
-			}
-		});
+			.then(function (dbTourney) {
+				for (i = 0; i < dbTourney.length; i++) {
+					existingTournies.push(dbTourney[i].dataValues);
+				}
+				if (cb) {
+					cb(existingTournies);
+				}
+			});
 	},
 
-	deleteTourneys: function(id) {
+	deleteTourneys: function (id) {
 		console.log("SQL for deleting a match goes here");
-		db.Match.destroy({
+		db.Tournament.destroy({
 			where: {
 				id: id
 			}
-		}).then(function(dbTourney) {
+		}).then(function (dbTourney) {
 
 		});
 	},
 
-	getTourneyMatches: function(cb, id) {
+	getTourneyMatches: function (cb, id) {
 		console.log("SQL for getting tourney matches goes here");
 		var existingTourneyMatches = [];
 		db.Match.findAll({
-			where : { 
-				tournament_section: { like: id + '%'}
+			where: {
+				tournament_section: { like: id + '%' }
 			}
 		})
-			.then(function(dbTourneyMatch) {
-			for (i = 0; i < dbTourneyMatch.length; i++) {
-				existingTourneyMatches.push(dbTourneyMatch[i].dataValues);
-			}
-			if (cb){
-				cb(existingTourneyMatches);
-			}
-		});
+			.then(function (dbTourneyMatch) {
+				for (i = 0; i < dbTourneyMatch.length; i++) {
+					existingTourneyMatches.push(dbTourneyMatch[i].dataValues);
+				}
+				if (cb) {
+					cb(existingTourneyMatches);
+				}
+			});
 	},
-	checkPlayer: function(player) {
+	checkPlayer: function (player) {
 		db.Player.findOne({
 			where: {
 				player_number: player.Number
 			}
-		}).then(function(dbPlayer) {
+		}).then(function (dbPlayer) {
 			if (dbPlayer == null) {
 				db.Player.create({
 					section: player.Section,
@@ -104,7 +104,7 @@ module.exports = {
 					total_points: player.TotalPoints,
 					createdAt: null,
 					updatedAt: null
-				}).then(function(dbPlayer2) {
+				}).then(function (dbPlayer2) {
 
 				});
 			}
@@ -123,37 +123,37 @@ module.exports = {
 					win_points: newTotalWinPoints,
 					total_points: newTotalPoints
 				}, {
-					where: { player_number: existingPlayer.player_number }
-				}).then(function(dbPlayer3) {
+						where: { player_number: existingPlayer.player_number }
+					}).then(function (dbPlayer3) {
 
-				});
+					});
 			}
 		});
 	},
-	getPlayers: function(cb) {
+	getPlayers: function (cb) {
 		console.log("SQL for getting players goes here");
 		var existingPlayers = [];
 		db.Player.findAll({})
-			.then(function(dbPlayer) {
-			for (i = 0; i < dbPlayer.length; i++) {
-				existingPlayers.unshift(dbPlayer[i].dataValues);
-			}
-			if (cb){
-				cb(existingPlayers);
-			}
-		});
+			.then(function (dbPlayer) {
+				for (i = 0; i < dbPlayer.length; i++) {
+					existingPlayers.unshift(dbPlayer[i].dataValues);
+				}
+				if (cb) {
+					cb(existingPlayers);
+				}
+			});
 	},
-	deletePlayer: function(id) {
+	deletePlayer: function (id) {
 		console.log("SQL for deleting a player goes here");
 		db.Player.destroy({
 			where: {
 				id: id
 			}
-		}).then(function(dbPlayer) {
+		}).then(function (dbPlayer) {
 
 		});
 	},
-	createTournament: function(tournament) {
+	createTournament: function (tournament) {
 		self = this;
 		db.Tournament.create({
 			tournament_type: tournament.TournamentType,
@@ -161,11 +161,11 @@ module.exports = {
 			number_of_rounds: tournament.NumberOfRounds,
 			number_of_sets: tournament.NumberOfSets,
 			tournament_section: null
-		}).then(function(dbTournament) {
+		}).then(function (dbTournament) {
 			self.createTournamentMatch(dbTournament.dataValues);
 		});
 	},
-	createTournamentMatch: function(tournament) {
+	createTournamentMatch: function (tournament) {
 		self = this;
 		var count = 0;
 		var roundCount = 1;
@@ -176,37 +176,37 @@ module.exports = {
 			where: {
 				id: tournament.id
 			}
-		}).then(function(dbTournament) {
+		}).then(function (dbTournament) {
 			while (roundCount <= dbTournament.dataValues.number_of_rounds) {
-				switch(roundCount) {
+				switch (roundCount) {
 					case 1:
-					var firstRoundMatchCount = playerCount / 2;
-					self.generateTournamentFillerData(dbTournament.dataValues, firstRoundMatchCount, roundCount);
-					break;
+						var firstRoundMatchCount = playerCount / 2;
+						self.generateTournamentFillerData(dbTournament.dataValues, firstRoundMatchCount, roundCount);
+						break;
 					case 2:
-					var secondRoundMatchCount = firstRoundMatchCount / 2;
-					self.generateTournamentFillerData(dbTournament.dataValues, secondRoundMatchCount, roundCount);
-					break;
+						var secondRoundMatchCount = firstRoundMatchCount / 2;
+						self.generateTournamentFillerData(dbTournament.dataValues, secondRoundMatchCount, roundCount);
+						break;
 					case 3:
-					var thirdRoundMatchCount = secondRoundMatchCount / 2;
-					self.generateTournamentFillerData(dbTournament.dataValues, thirdRoundMatchCount, roundCount);
-					break;
+						var thirdRoundMatchCount = secondRoundMatchCount / 2;
+						self.generateTournamentFillerData(dbTournament.dataValues, thirdRoundMatchCount, roundCount);
+						break;
 					case 4:
-					var fourthRoundMatchCount = thirdRoundMatchCount / 2;
-					self.generateTournamentFillerData(dbTournament.dataValues, fourthRoundMatchCount, roundCount);
-					break;
+						var fourthRoundMatchCount = thirdRoundMatchCount / 2;
+						self.generateTournamentFillerData(dbTournament.dataValues, fourthRoundMatchCount, roundCount);
+						break;
 					case 5:
-					var fifthRoundMatchCount = fourthRoundMatchCount / 2;
-					self.generateTournamentFillerData(dbTournament.dataValues, fifthRoundMatchCount, roundCount);
-					break;
+						var fifthRoundMatchCount = fourthRoundMatchCount / 2;
+						self.generateTournamentFillerData(dbTournament.dataValues, fifthRoundMatchCount, roundCount);
+						break;
 					case 6:
-					var sixthRoundMatchCount = fifthRoundMatchCount / 2;
-					self.generateTournamentFillerData(dbTournament.dataValues, sixthRoundMatchCount, roundCount);
-					break;
+						var sixthRoundMatchCount = fifthRoundMatchCount / 2;
+						self.generateTournamentFillerData(dbTournament.dataValues, sixthRoundMatchCount, roundCount);
+						break;
 					case 7:
-					var seventhRoundMatchCount = sixthRoundMatchCount / 2;
-					self.generateTournamentFillerData(dbTournament.dataValues, seventhRoundMatchCount, roundCount);
-					break;
+						var seventhRoundMatchCount = sixthRoundMatchCount / 2;
+						self.generateTournamentFillerData(dbTournament.dataValues, seventhRoundMatchCount, roundCount);
+						break;
 				}
 				roundCount++;
 			}
@@ -214,7 +214,7 @@ module.exports = {
 			matches = [];
 		});
 	},
-	generateTournamentFillerData: function(tournament, roundMatchCount, roundCount) {
+	generateTournamentFillerData: function (tournament, roundMatchCount, roundCount) {
 		var matchCount = 1;
 		var count = 0;
 		var score = "0-0";
@@ -224,20 +224,20 @@ module.exports = {
 		var fillerOpponentPartnerNumber;
 		while (matchCount <= roundMatchCount) {
 			if (tournament.tournament_type === "singles") {
-				fillerPlayerNumber =  "P" + playerCount;
+				fillerPlayerNumber = "P" + playerCount;
 				fillerOpponentNumber = "O" + playerCount;
 			}
 			else {
-				fillerPlayerNumber =  "P" + playerCount;
-				fillerPlayerPartnerNumber =  "PP" + playerCount;
+				fillerPlayerNumber = "P" + playerCount;
+				fillerPlayerPartnerNumber = "PP" + playerCount;
 				fillerOpponentNumber = "O" + playerCount;
 				fillerOpponentPartnerNumber = "OP" + playerCount;
 			}
 			var tournamentSection = tournament.id + "-" + roundCount + "-" + matchCount;
 			while (count <= (tournament.number_of_sets)) {
 				if (count < (tournament.number_of_sets - 1)) {
-					score +=  ",0-0";
-				} 
+					score += ",0-0";
+				}
 				count++;
 			}
 			match = {
@@ -257,7 +257,7 @@ module.exports = {
 			matches.push(match);
 		}
 	},
-	pushTournamentFillerData: function(matches) {
+	pushTournamentFillerData: function (matches) {
 		for (i = 0; i < matches.length; i++) {
 			self.createMatch(matches[i]);
 		}
