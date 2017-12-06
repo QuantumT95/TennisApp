@@ -38,6 +38,7 @@ $(document).ready(function () {
 		}).done(function (data) {
 			console.log(data);
 		});
+		window.location.reload(true);
 		getTournaments();
 	});
 
