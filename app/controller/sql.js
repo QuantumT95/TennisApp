@@ -61,7 +61,7 @@ module.exports = {
 
 	deleteTourneys: function(id) {
 		console.log("SQL for deleting a match goes here");
-		db.Match.destroy({
+		db.Tournament.destroy({
 			where: {
 				id: id
 			}
