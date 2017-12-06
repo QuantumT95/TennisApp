@@ -138,6 +138,50 @@ input:focus{
     padding-top: 4%;
 }
 
+th {
+    text-align: left;
+    background-color: #0ABC3F;
+    color: white;
+    border-color: white;
+    border-style: solid;
+    border-width: 6px;
+    padding: 7px;
+}
 
+tr td {
+    color: grey;
+    background-color: white;
+    text-align: center;
+    border-color: #00000030;
+    border-width: 0.25px;
+    border-style: solid;
+}
 
+.edit{
+    background-color: red;
+    text-align: center;
+    color: white;
+    border-style: none;
+    margin-top: 4%;
+    border-radius: 5.5px;
+}
 
+.edit td{
+    border-style: none;
+    background-color: transparent !important;
+
+}
+
+.delete td{
+    border-style: none;
+    background-color: transparent !important;
+}
+
+.delete{
+    background-color: orange;
+    text-align: center;
+    color: white;
+    border-style: none;
+    margin-top: 4%;
+    border-radius: 5.5px;
+}
