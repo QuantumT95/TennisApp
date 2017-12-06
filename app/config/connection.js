@@ -12,9 +12,9 @@ if (process.env.JAWSDB_URL) {
   connection =mysql.createConnection(process.env.JAWSDB_URL);
   } else {
     connection = mysql.createConnection({
-      host: 'k3xio06abqa902qt.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-      username: 'e39lnmb7jol1xkky',
-      password: 'z53nk04jmjrtbfs1',
+      host: '',
+      username: 'root',
+      password: 'MyNewPass',
       database: 'tennis_db'
     });
   }
