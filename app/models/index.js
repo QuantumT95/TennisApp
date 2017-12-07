@@ -11,15 +11,15 @@ var db = {};
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
-//   var sequelize = new Sequelize(config.database, config.username, config.password, config);
-// }
-var sequelize = new Sequelize('tennis_db', 'root', 'MyNewPass', {
-  host: "127.0.0.1",
-  dialect: 'mysql',
-  define: {
-      timestamp: false
-  }
-});
+  var sequelize = new Sequelize(config.database, config.username, config.password, config);
+}
+// var sequelize = new Sequelize('tennis_db', 'root', 'MyNewPass', {
+//   host: "127.0.0.1",
+//   dialect: 'mysql',
+//   define: {
+//       timestamp: false
+//   }
+// });
 
 fs
   .readdirSync(__dirname)
@@ -40,4 +40,4 @@ Object.keys(db).forEach(function(modelName) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-// module.exports = db;
+module.exports = db;
