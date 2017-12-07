@@ -17,7 +17,7 @@ var sequelize = new Sequelize('tennis_db', 'root', 'MyNewPass', {
   host: "127.0.0.1",
   dialect: 'mysql',
   define: {
-      timestamps: false
+      timestamp: false
   }
 });
 
@@ -40,4 +40,4 @@ Object.keys(db).forEach(function(modelName) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = db;
+// module.exports = db;
