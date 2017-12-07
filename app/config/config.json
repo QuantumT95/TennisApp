@@ -9,12 +9,12 @@
   "test": {
     "username": "root",
     "password": "MyNewPass",
-    "database": "tennis_db",
+    "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
-    "use_env_variable": "JAWSDB_URL",
+    "use_env_variable": "mysql://e39lnmb7jol1xkky:z53nk04jmjrtbfs1@k3xio06abqa902qt.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/lrqsepji00y4buf7",
     "dialect": "mysql"
   }
 }
