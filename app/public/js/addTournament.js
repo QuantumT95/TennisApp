@@ -36,10 +36,14 @@ $(document).ready(function () {
 		$.ajax({
 			url: "/tournaments/select/" + thisId
 		}).done(function (data) {
-			console.log(data);
+			getTourneyInfo(data);
+			$("#id").val("");
+			$("#section").val("");
+			$("#match_type").val("");
+			$("#number_of_sets").val("");
+			$("#player_number").val("");
 		});
-		window.location.reload(true);
-		getTournaments();
+		getTourneyInfo();
 	});
 
 	function getTournaments() {
@@ -50,10 +54,26 @@ $(document).ready(function () {
 					data[i].number_of_players + "</td><td>" +
 					data[i].number_of_rounds + "</td><td>" +
 					data[i].number_of_sets + "</td><td>" +
-					"</td><td><button class='select' data-id='" + data[i].id + "'>Select</button></td><td><button class='delete' data-id='" + data[i].id + "'>Delete</button></td></tr>");
+					"</td><td><button class='select'data-id='" + data[i].id + "'>Select</button></td><td><button class='delete' data-id='" + data[i].id + "'>Delete</button></td></tr>");
 			}
 			$("#tournies").prepend("<tr><th>Type </th><th>Number Of Players </th><th>Number of Rounds </th><th>Number of Sets </th></tr>");
 		});
 	}
 	getTournaments();
+
+	function getTourneyInfo(tournamentMatches) {
+		$("#tourniesInfo").empty();
+		console.log(tournamentMatches);
+			for (var i = 0; i < tournamentMatches.length; i++) {
+				$("#tourniesInfo").append("<tr><td>" +
+                    tournamentMatches[i].tournament_section + "</td><td>" +
+                    tournamentMatches[i].match_type + "</td><td>" +
+                    tournamentMatches[i].number_of_sets + "</td><td>" +
+                    tournamentMatches[i].player_number + "</td><td>" +                   
+                    tournamentMatches[i].opponent_number + "</td><td>" +
+                    tournamentMatches[i].score+ "</td></tr>");
+			}
+			$("#tourniesInfo").prepend("<tr><th>Tournamnent Section </th><th>Match Type </th><th>Number of Sets </th> <th>Player Number </th> <th>Opponent Number </th> <th>Score </th></tr>");
+		}
+	getTourneyInfo();
 });
