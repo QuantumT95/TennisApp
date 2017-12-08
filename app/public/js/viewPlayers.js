@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
 	$(document).on("click", ".delete", function () {
 		var thisId = $(this).attr("data-id");
 		$.ajax({
@@ -12,7 +12,7 @@ $(document).ready(function () {
 
 	function getPlayers() {
 		$("#players").empty();
-		$.getJSON("/players", function (data) {
+		$.getJSON("/players", function(data) {
 			console.log(data);
 			for (var i = 0; i < data.length; i++) {
 				$("#players").prepend("<tr><td>" + data[i].section + "</td><td>" +

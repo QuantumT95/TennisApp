@@ -36,14 +36,50 @@ module.exports = {
 		console.log("SQL for editing a match goes here");
 	},
 	deleteMatch: function (id) {
+		self = this;
 		console.log("SQL for deleting a match goes here");
-		db.Match.destroy({
+		db.Match.findOne({
 			where: {
 				id: id
 			}
-		}).then(function (dbPlayer) {
+		}).then(function (dbMatch) {
+			var score = [];
+			score = dbMatch.dataValues.score;
+			var splitter = "-";
+			var splitSetScore = score.split(splitter);
+			var playerScore = splitSetScore[0];
+			var opponentScore = splitSetScore[1];
+			var m = require("./match.js");
+			var winLose = [];
+			winLose = m.checkWinLose(playerScore, opponentScore);
+			var player = {
+            	Section: dbMatch.dataValues.section,
+				Number: dbMatch.dataValues.player_number,
+				Game: playerScore,
+				GamePoints: null,
+				Win: winLose[0],
+				WinPoints: null,
+				TotalPoints: null
+			}
+			var opponent = {
+            	Section: dbMatch.dataValues.section,
+				Number: dbMatch.dataValues.opponent_number,
+				Game: opponentScore,
+				GamePoints: null,
+				Win: winLose[1],
+				WinPoints: null,
+				TotalPoints: null
+			}
+			self.editPlayer(player);
+			self.editPlayer(opponent);
+			db.Match.destroy({
+				where: {
+					id: id
+				}
+			}).then(function (dbMatch2) {
 
-		});
+			});
+		})
 	},
 	getTournies: function (cb) {
 		console.log("SQL for getting tournies goes here");
@@ -69,7 +105,6 @@ module.exports = {
 
 		});
 	},
-
 	getTourneyMatches: function (cb, id) {
 		console.log("SQL for getting tourney matches goes here");
 		var existingTourneyMatches = [];
@@ -123,10 +158,10 @@ module.exports = {
 					win_points: newTotalWinPoints,
 					total_points: newTotalPoints
 				}, {
-						where: { player_number: existingPlayer.player_number }
-					}).then(function (dbPlayer3) {
+					where: { player_number: existingPlayer.player_number }
+				}).then(function (dbPlayer3) {
 
-					});
+				});
 			}
 		});
 	},
@@ -142,6 +177,33 @@ module.exports = {
 					cb(existingPlayers);
 				}
 			});
+	},
+	editPlayer: function (player) {
+		console.log("SQL for editing a player goes here");
+		db.Player.findOne({
+			where: {
+				player_number: player.Number
+			}
+		}).then(function (dbPlayer) {
+			var p = require("./player");
+			existingPlayer = dbPlayer.dataValues;
+			var newTotalGames = existingPlayer.total_games - player.Game;
+			var newTotalGamePoints = p.getGamePoints(newTotalGames);
+			var newTotalWins = existingPlayer.total_wins - player.Win;
+			var newTotalWinPoints = p.getWinPoints(newTotalWins);
+			var newTotalPoints = parseFloat(newTotalGamePoints) + parseFloat(newTotalWinPoints);
+			db.Player.update({
+				total_games: newTotalGames,
+				game_points: newTotalGamePoints,
+				total_wins: newTotalWins,
+				win_points: newTotalWinPoints,
+				total_points: newTotalPoints
+			}, {
+				where: { player_number: existingPlayer.player_number }
+			}).then(function (dbPlayer2) {
+
+			});
+		});
 	},
 	deletePlayer: function (id) {
 		console.log("SQL for deleting a player goes here");
