@@ -13,4 +13,4 @@ DB.sequelize.sync({ force: true }).then(function() {
   App.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
-});
+}); 
