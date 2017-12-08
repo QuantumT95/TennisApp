@@ -63,7 +63,7 @@ $(document).ready(function () {
 						data[i].player_number + "</td><td>" +
 						data[i].opponent_number + "</td><td>" +
 						data[i].score +
-						"</td><td><button class='edit' data-id='" + data[i].id + "'>Edit</button></td>" +
+						// "</td><td><button class='edit' data-id='" + data[i].id + "'>Edit</button></td>" +
 						"</td><td><button class='delete' data-id='" + data[i].id + "'>Delete</button></td></tr>");
 				}
 			}

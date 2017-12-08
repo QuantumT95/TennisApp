@@ -25,7 +25,7 @@ module.exports = {
 		db.Match.findAll({})
 			.then(function (dbMatch) {
 				for (i = 0; i < dbMatch.length; i++) {
-					existingMatches.push(dbMatch[i].dataValues);
+					existingMatches.unshift(dbMatch[i].dataValues);
 				}
 				if (cb) {
 					cb(existingMatches);
@@ -125,6 +125,7 @@ module.exports = {
 	checkPlayer: function (player) {
 		db.Player.findOne({
 			where: {
+				section: player.Section,
 				player_number: player.Number
 			}
 		}).then(function (dbPlayer) {
@@ -158,7 +159,10 @@ module.exports = {
 					win_points: newTotalWinPoints,
 					total_points: newTotalPoints
 				}, {
-					where: { player_number: existingPlayer.player_number }
+					where: { 
+						section: existingPlayer.section,
+						player_number: existingPlayer.player_number 
+					}
 				}).then(function (dbPlayer3) {
 
 				});
@@ -182,6 +186,7 @@ module.exports = {
 		console.log("SQL for editing a player goes here");
 		db.Player.findOne({
 			where: {
+				section: player.Section,
 				player_number: player.Number
 			}
 		}).then(function (dbPlayer) {
@@ -199,7 +204,10 @@ module.exports = {
 				win_points: newTotalWinPoints,
 				total_points: newTotalPoints
 			}, {
-				where: { player_number: existingPlayer.player_number }
+				where: { 
+					section: existingPlayer.section,
+					player_number: existingPlayer.player_number 
+				}
 			}).then(function (dbPlayer2) {
 
 			});
