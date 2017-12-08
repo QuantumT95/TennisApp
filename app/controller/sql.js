@@ -28,8 +28,21 @@ module.exports = {
 				existingMatches.push(dbMatch[i].dataValues);
 			}
 			if (cb){
-				cb(existingMatches)
+				cb(existingMatches);
 			}
+		});
+	},
+	editMatch: function(id) {
+		console.log("SQL for editing a match goes here");
+	},
+	deleteMatch: function(id) {
+		console.log("SQL for deleting a match goes here");
+		db.Match.destroy({
+			where: {
+				id: id
+			}
+		}).then(function(dbPlayer) {
+
 		});
 	},
 	getTournies: function(cb) {
@@ -41,7 +54,36 @@ module.exports = {
 				existingTournies.push(dbTourney[i].dataValues);
 			}
 			if (cb){
-				cb(existingTournies)
+				cb(existingTournies);
+			}
+		});
+	},
+
+	deleteTourneys: function(id) {
+		console.log("SQL for deleting a match goes here");
+		db.Tournament.destroy({
+			where: {
+				id: id
+			}
+		}).then(function(dbTourney) {
+
+		});
+	},
+
+	getTourneyMatches: function(cb, id) {
+		console.log("SQL for getting tourney matches goes here");
+		var existingTourneyMatches = [];
+		db.Match.findAll({
+			where : { 
+				tournament_section: { like: id + '%'}
+			}
+		})
+			.then(function(dbTourneyMatch) {
+			for (i = 0; i < dbTourneyMatch.length; i++) {
+				existingTourneyMatches.push(dbTourneyMatch[i].dataValues);
+			}
+			if (cb){
+				cb(existingTourneyMatches);
 			}
 		});
 	},
@@ -86,6 +128,29 @@ module.exports = {
 
 				});
 			}
+		});
+	},
+	getPlayers: function(cb) {
+		console.log("SQL for getting players goes here");
+		var existingPlayers = [];
+		db.Player.findAll({})
+			.then(function(dbPlayer) {
+			for (i = 0; i < dbPlayer.length; i++) {
+				existingPlayers.unshift(dbPlayer[i].dataValues);
+			}
+			if (cb){
+				cb(existingPlayers);
+			}
+		});
+	},
+	deletePlayer: function(id) {
+		console.log("SQL for deleting a player goes here");
+		db.Player.destroy({
+			where: {
+				id: id
+			}
+		}).then(function(dbPlayer) {
+
 		});
 	},
 	createTournament: function(tournament) {

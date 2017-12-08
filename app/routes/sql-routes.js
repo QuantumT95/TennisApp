@@ -14,14 +14,15 @@ module.exports = function(App) {
 		t.createTournament(tournament);
 	});
 
-	App.get("/players/:playerNumber?", function(req, res) {
-		var playerNumber = req.params.playerNumber;
-		if (playerNumber) {
+	App.get("/players", function(req, res) {
+		var existingPlayers = SQL.getPlayers((existingPlayers)=>{
+			res.send(existingPlayers);
+		});
+	});
 
-		}
-		else {
-
-		}
+	App.get("/players/delete/:id", function(req, res) {
+		var id = req.params.id;
+		SQL.deletePlayer(id);
 	});
 
 	App.get("/matches", function(req, res) {
@@ -30,11 +31,34 @@ module.exports = function(App) {
 		});
 	});
 
+	App.get("/matches/edit/:id", function(req, res) {
+		var id = req.params.id;
+		SQL.editMatch(id);
+	});
+
+	App.get("/matches/delete/:id", function(req, res) {
+		var id = req.params.id;
+		SQL.deleteMatch(id);
+	});
+
 	App.get("/tournaments", function(req, res) {
 		var existingTournies = SQL.getTournies((existingTournies)=>{	
 			res.send(existingTournies);
 		});
 	});
+
+	App.get("/tournaments/select/:id", function(req, res) {
+		var id = req.params.id;
+		var existingtourneyMatches = SQL.getTourneyMatches((existingtourneyMatches)=>{	
+			res.send(existingtourneyMatches);
+		}, id);
+	});
+
+	App.get("/tournaments/delete/:id", function(req, res) {
+		var id = req.params.id;
+		SQL.deleteTourneys(id);
+	});
+
 
 	App.get("/matches/delete/:id", function(req, res) {
 

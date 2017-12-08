@@ -178,6 +178,7 @@ tr td {
 .edit td{
     border-style: none;
     background-color: transparent !important;
+<<<<<<< HEAD
 
 }
 
@@ -195,6 +196,21 @@ tr td {
     border-radius: 5.5px;
 }
 
+=======
+>>>>>>> 8d134ffb0ff7eb621abed670eaf86b8ac512843d
 
+}
 
+.delete td{
+    border-style: none;
+    background-color: transparent !important;
+}
 
+.delete{
+    background-color: red;
+    text-align: center;
+    color: white;
+    border-style: none;
+    margin-top: 4%;
+    border-radius: 5.5px;
+}
