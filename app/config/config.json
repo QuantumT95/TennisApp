@@ -1,11 +1,7 @@
 {
     "development": {
       "username": "root",
-<<<<<<< HEAD
       "password": "MyNewPass",
-=======
-      "password": "",
->>>>>>> 35913f1efd7aedcf37c3da882650f6aca0e6521f
       "database": "tennis_db",
       "host": "127.0.0.1",
       "dialect": "mysql"
